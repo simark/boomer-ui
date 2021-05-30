@@ -60,6 +60,21 @@ d = ["aiohttp (>=3.6.0)", "aiohttp-cors"]
 python2 = ["typed-ast (>=1.4.2)"]
 
 [[package]]
+name = "boomer"
+version = "0.1.0"
+description = "Rend un texte en français tel que certains boomers québécois l'auraient écrit"
+category = "main"
+optional = false
+python-versions = '^3.6'
+develop = false
+
+[package.source]
+type = "git"
+url = "https://github.com/eepp/boomer.git"
+reference = "master"
+resolved_reference = "b3c3f8ee111024017fb123fd23529b9c7c189e78"
+
+[[package]]
 name = "click"
 version = "7.1.2"
 description = "Composable command line interface toolkit"
@@ -324,7 +339,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "698c76b18fed58db020196a91c1f5dabedd56ddd4f91a94d504bdf4714ce11f9"
+content-hash = "f76322b6ce840d93edea34afe51b96a0bab71cae8d670cbb6b707d24889ab055"
 
 [metadata.files]
 aiofiles = [
@@ -347,6 +362,7 @@ black = [
     {file = "black-21.5b1-py3-none-any.whl", hash = "sha256:8a60071a0043876a4ae96e6c69bd3a127dad2c1ca7c8083573eb82f92705d008"},
     {file = "black-21.5b1.tar.gz", hash = "sha256:23695358dbcb3deafe7f0a3ad89feee5999a46be5fec21f4f1d108be0bcdb3b1"},
 ]
+boomer = []
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
     {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
