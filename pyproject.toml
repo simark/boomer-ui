@@ -5,7 +5,7 @@ description = ""
 authors = ["Simon Marchi <simon.marchi@polymtl.ca>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.7"
 fastapi = "^0.65.1"
 Jinja2 = "^3.0.1"
 aiofiles = "^0.7.0"
