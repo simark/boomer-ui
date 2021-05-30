@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "boomer-ui"
+version = "0.1.0"
+description = ""
+authors = ["Simon Marchi <simon.marchi@polymtl.ca>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.1"
+Jinja2 = "^3.0.1"
+aiofiles = "^0.7.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = {version = "^21.5b1", allow-prereleases = true}
+uvicorn = "^0.13.4"
+
+[tool.poetry.scripts]
+start = "boomer_ui.app:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
