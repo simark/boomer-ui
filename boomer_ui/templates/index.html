@@ -12,11 +12,62 @@
         $(function () {
             $('#send-btn').click(async event => {
                 const text = $('#input-text').val();
-                const result = await $.get('boomerify', { text });
+
+                const algoCfgs = {};
+
+                $('.algo-container').each((idx, elem) => {
+                    const name = $(elem).find('.algo-name').first().text();
+                    const value = $(elem).find('.algo-range').first().val();
+                    algoCfgs[name] = value;
+                });
+
+                const result = await $.get('boomerify', { text, cfg: JSON.stringify(algoCfgs) });
                 $('#output-text').val(result);
             });
         });
+
+        $(function () {
+            const updateAlgoPercentage = (containerElem) => {
+                const percentage = $(containerElem).find('input').val();
+                $(containerElem).find('.percentage').text(percentage + "%");
+            };
+
+            $('.algo-container').each((idx, elem) => {
+                updateAlgoPercentage(elem);
+                $(elem).find('input').on('input', (event) => {
+                    updateAlgoPercentage(event.target.parentElement);
+                });
+            });
+        });
     </script>
+    <style>
+        .algo-name {
+            font-size: xx-large;
+            color: dodgerblue;
+            font-weight: bold;
+        }
+
+        .algo-container {
+            background-color: #eee;
+            padding: 0.4em;
+        }
+
+        .algo-container p {
+            margin-bottom: 0;
+        }
+
+        .algo-desc {
+            font-style: italic;
+            font-size: small;
+        }
+
+        .percentage {
+            text-align: center;
+            color: dodgerblue;
+            font-weight: bolder;
+            font-size: larger;
+        }
+    </style>
 
 </head>
 
@@ -31,6 +82,18 @@
             <label for="output-text">Sorti:</label>
             <textarea class="form-control" id="output-text" rows="3"></textarea>
         </div>
+        {% for algo in algo_infos %}
+        <div class="mb-3 algo-container">
+            <p class="algo-name">{{ algo.name }}</p>
+            <p class="algo-desc">{{ algo.description }}</p>
+            <p class="percentage"></p>
+            <p></p>
+            <input type="range" class="form-range algo-range" id="range-{{ algo.name }}"
+                value="{{ 100 * algo.default_configuration[0] // (algo.default_configuration[0] + algo.default_configuration[1]) }}">
+            </p>
+
+        </div>
+        {% endfor %}
         <button type="button" class="btn btn-primary" id="send-btn">Envoyés</button>
     </div>
 
